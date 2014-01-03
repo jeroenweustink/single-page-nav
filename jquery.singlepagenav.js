@@ -4,9 +4,9 @@
 
         // Settings
         var settings = jQuery.extend({
-            threshold: 50,
+            offset: 0,
             currentClass: 'current',
-            currentOffset: 250,
+            currentThreshold: 0,
             duration: 500,
             effect: 'swing',
             started: function () {},
@@ -46,14 +46,14 @@
             get_current_section: function() {
 
                 // Calculate top
-                var top = this.window.scrollTop() + settings.threshold;
+                var top = this.window.scrollTop() + settings.offset;
 
                 // Check each section
                 var current = null;
                 $.each(this.sections, function() {
                     var position = this.position();
-                    var start = position.top - settings.currentOffset;
-                    var end = start + this.outerHeight() + settings.threshold + settings.currentOffset;
+                    var start = position.top - settings.currentThreshold;
+                    var end = start + this.outerHeight() + settings.offset + settings.currentThreshold;
                     if (top >= start && top <= end) {
                         current = this;
                     }
@@ -102,12 +102,12 @@
                     }
 
                     // Set current class in menu
-                    $(settings.menu).find('a').removeClass(settings.current);
-                    $(settings.menu).find('a[href="' + hash + '"]').addClass(settings.current);
+                    $(settings.menu).find('a').removeClass(settings.currentClass);
+                    $(settings.menu).find('a[href="' + hash + '"]').addClass(settings.currentClass);
 
                     // Get position and scroll
                     var position = section.position();
-                    var scroll = position.top - settings.threshold;
+                    var scroll = position.top - settings.offset;
 
                     // Animate and callback
                     settings.started();
@@ -134,6 +134,12 @@
                 // Binds
                 this.bind_scroll();
                 this.bind_click();
+
+                // Highlight current on load
+                var current = this.get_current_section();
+                var link = this.menu.find('a[href="#' + current.attr('id') + '"]');
+
+                link.addClass(settings.currentClass);
             }
         }
 

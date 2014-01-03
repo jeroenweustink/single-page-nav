@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+div {
+    position: fixed;
+    top: 2px;
+    right: 10px;
+}
+
+section {
+    height: 1000px;
+    padding: 15px;
+}
+
+section:nth-child(odd) {
+    background: #EEEEEE;
+}
+
+section:nth-child(even) {
+    background: #FFFFFF;
+}
+
+section:first-child {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background: #DDDDDD;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline;
+}
+
+li > a {
+    padding: 10px 10px 8px;
+    text-decoration: none;
+    background: #CCCCCC;
+    color: #FFFFFF;
+}
+
+li > a:hover, li > a.current {
+    background: blue;
+}
