@@ -111,7 +111,7 @@
 
                     // Animate and callback
                     settings.started();
-                    self.html.animate({ scrollTop: scroll }, settings.duration, settings.effect,
+                    self.html.stop(true, false).animate({ scrollTop: scroll }, settings.duration, settings.effect,
                         function () {
                             if (!animated) {
                                 settings.finished();
