@@ -54,7 +54,7 @@ It picks up every link with an anchor in it, but can also be used as main naviga
 
 ## Options
 ---
-    $(selector).singlepagenav({
+    $(selector).singlePageNav({
     	offset: 0, 					// Offset from top
     	currentClass: 'current', 	// Class added to menu link when section is active
         currentThreshold: 0, 		// Threshold for triggering current section action
